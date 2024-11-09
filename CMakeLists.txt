@@ -195,7 +195,8 @@ unset(OPENSSL_KNOWN_RAND_SEED)
 
 # no-<cipher>
 set(OPENSSL_DEFAULT_DISABLED_CIPHERS asan buildtest-c++ crypto-mdebug crypto-mdebug-backtrace devcryptoeng ec_nistp_64_gcc_128 egd external-tests fuzz-afl fuzz-libfuzzer ktls md2
-                                     msan rc5 sctp ssl3 ssl3-method trace ubsan unit-test weak-ssl-ciphers brotli brotli-dynamic tfo zstd zstd-dynamic zlib zlib-dynamic
+                                     msan rc5 sctp ssl3 ssl3-method trace ubsan unit-test weak-ssl-ciphers brotli brotli-dynamic tfo zstd zstd-dynamic zlib zlib-dynamic jitter
+                                     demos h3demo pie jitter
 )
 
 set(OPENSSL_MIN_API_LEVEL "3.0.0" CACHE STRING "OpenSSL SSL minimum API LEVEL")
@@ -327,13 +328,13 @@ foreach (_CIPHER IN ITEMS
     bulk ssl des ec sock dgram dtls tls engine stdio tests sm3 unit-test msan cmac legacy cmp comp brotli-dynamic zstd-dynamic zlib-dynamic thread-pool blake2 # dependent
     dtls1_2-method dtls1-method tls1_2-method tls1_1-method tls1-method ssl3-method # method
     aes asn1 bio bn buffer conf crmf encode_decode ess evp ffc hmac hpke http kdf lhash md5 modes objects pem pkcs7 pkcs12 property rand rsa sha stack store thread txt_db
-    x509 # directories
+    x509 hashtable # directories
     dtls1_2 dtls1 tls1_3 tls1_2 tls1_1 tls1 ssl3 # TLS protocol
     acvp-tests afalgeng aria apps argon2 asan async atexit autoalginit autoerrinit autoload-config bf brotli buildtest-c++ cached-fetch camellia capieng winstore cast chacha cms
     crypto-mdebug ct default-thread-pool devcryptoeng dh dsa docs ec2m ec_nistp_64_gcc_128 ecdh ecdsa ecx egd external-tests filenames fips fips-securitychecks fuzz-afl
     fuzz-libfuzzer gost idea ktls loadereng makedepend md2 md4 mdc2 multiblock nextprotoneg ocb ocsp padlockeng pinshared poly1305 posix-io psk quic unstable-qlog qlog rc2 rc4 rc5
     rdrand rfc3779 rmd160 scrypt sctp secure-memory seed siphash siv sm2 sm2-precomp sm4 srp srtp ssl-trace tfo trace ts ubsan ui-console uplink weak-ssl-ciphers whirlpool zlib
-    zstd
+    zstd jitter demos h3demo fips-post pie integrity-only-ciphers
 )
 
     list(FIND OPENSSL_DEFAULT_DISABLED_CIPHERS ${_CIPHER} _CIPHER_IS_DEFAULT_DISABLED)

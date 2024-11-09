@@ -314,6 +314,7 @@ target_include_directories(legacy
             ${CMAKE_SOURCE_DIR}/openssl/crypto
             ${CMAKE_BINARY_DIR}/providers/common/include
             ${CMAKE_SOURCE_DIR}/openssl/providers/include
+            ${CMAKE_SOURCE_DIR}/openssl/providers/fips/include
 )
 
 # workaround!

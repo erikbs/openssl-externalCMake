@@ -19,8 +19,33 @@ set(PARAM_NAMES
     "PROV_PARAM_BUILDINFO"
     "PROV_PARAM_STATUS"
     "PROV_PARAM_SECURITY_CHECKS"
+    "PROV_PARAM_HMAC_KEY_CHECK"
+    "PROV_PARAM_KMAC_KEY_CHECK"
     "PROV_PARAM_TLS1_PRF_EMS_CHECK"
+    "PROV_PARAM_NO_SHORT_MAC"
     "PROV_PARAM_DRBG_TRUNC_DIGEST"
+    "PROV_PARAM_HKDF_DIGEST_CHECK"
+    "PROV_PARAM_TLS13_KDF_DIGEST_CHECK"
+    "PROV_PARAM_TLS1_PRF_DIGEST_CHECK"
+    "PROV_PARAM_SSHKDF_DIGEST_CHECK"
+    "PROV_PARAM_SSKDF_DIGEST_CHECK"
+    "PROV_PARAM_X963KDF_DIGEST_CHECK"
+    "PROV_PARAM_DSA_SIGN_DISABLED"
+    "PROV_PARAM_TDES_ENCRYPT_DISABLED"
+    "PROV_PARAM_RSA_PSS_SALTLEN_CHECK"
+    "PROV_PARAM_RSA_SIGN_X931_PAD_DISABLED"
+    "PROV_PARAM_RSA_PKCS15_PAD_DISABLED"
+    "PROV_PARAM_HKDF_KEY_CHECK"
+    "PROV_PARAM_KBKDF_KEY_CHECK"
+    "PROV_PARAM_TLS13_KDF_KEY_CHECK"
+    "PROV_PARAM_TLS1_PRF_KEY_CHECK"
+    "PROV_PARAM_SSHKDF_KEY_CHECK"
+    "PROV_PARAM_SSKDF_KEY_CHECK"
+    "PROV_PARAM_X963KDF_KEY_CHECK"
+    "PROV_PARAM_X942KDF_KEY_CHECK"
+    "PROV_PARAM_PBKDF2_LOWER_BOUND_CHECK"
+    "PROV_PARAM_ECDH_COFACTOR_CHECK"
+    "PROV_PARAM_SIGNATURE_DIGEST_CHECK"
     "PROV_PARAM_SELF_TEST_PHASE"
     "PROV_PARAM_SELF_TEST_TYPE"
     "PROV_PARAM_SELF_TEST_DESC"
@@ -35,6 +60,9 @@ set(PARAM_NAMES
     "ALG_PARAM_ENGINE"
     "ALG_PARAM_MAC"
     "ALG_PARAM_PROPERTIES"
+    "ALG_PARAM_FIPS_APPROVED_INDICATOR"
+    "ALG_PARAM_ALGORITHM_ID"
+    "ALG_PARAM_ALGORITHM_ID_PARAMS"
     "CIPHER_PARAM_PADDING"
     "CIPHER_PARAM_USE_BITS"
     "CIPHER_PARAM_TLS_VERSION"
@@ -60,13 +88,19 @@ set(PARAM_NAMES
     "CIPHER_PARAM_AEAD_TLS1_GET_IV_GEN"
     "CIPHER_PARAM_AEAD_TLS1_SET_IV_INV"
     "CIPHER_PARAM_AEAD_IVLEN"
+    "CIPHER_PARAM_AEAD_IV_GENERATED"
     "CIPHER_PARAM_AEAD_TAGLEN"
     "CIPHER_PARAM_AEAD_MAC_KEY"
     "CIPHER_PARAM_RANDOM_KEY"
     "CIPHER_PARAM_RC2_KEYBITS"
     "CIPHER_PARAM_SPEED"
     "CIPHER_PARAM_CTS_MODE"
+    "CIPHER_PARAM_DECRYPT_ONLY"
+    "CIPHER_PARAM_FIPS_ENCRYPT_CHECK"
+    "CIPHER_PARAM_FIPS_APPROVED_INDICATOR"
+    "CIPHER_PARAM_ALGORITHM_ID"
     "CIPHER_PARAM_ALGORITHM_ID_PARAMS"
+    "CIPHER_PARAM_ALGORITHM_ID_PARAMS_OLD"
     "CIPHER_PARAM_XTS_STANDARD"
     "CIPHER_PARAM_TLS1_MULTIBLOCK_MAX_SEND_FRAGMENT"
     "CIPHER_PARAM_TLS1_MULTIBLOCK_MAX_BUFSIZE"
@@ -99,6 +133,9 @@ set(PARAM_NAMES
     "MAC_PARAM_SIZE"
     "MAC_PARAM_BLOCK_SIZE"
     "MAC_PARAM_TLS_DATA_SIZE"
+    "MAC_PARAM_FIPS_NO_SHORT_MAC"
+    "MAC_PARAM_FIPS_KEY_CHECK"
+    "MAC_PARAM_FIPS_APPROVED_INDICATOR"
     "KDF_PARAM_SECRET"
     "KDF_PARAM_KEY"
     "KDF_PARAM_SALT"
@@ -145,12 +182,17 @@ set(PARAM_NAMES
     "KDF_PARAM_ARGON2_LANES"
     "KDF_PARAM_ARGON2_MEMCOST"
     "KDF_PARAM_ARGON2_VERSION"
+    "KDF_PARAM_FIPS_EMS_CHECK"
+    "KDF_PARAM_FIPS_DIGEST_CHECK"
+    "KDF_PARAM_FIPS_KEY_CHECK"
+    "KDF_PARAM_FIPS_APPROVED_INDICATOR"
     "RAND_PARAM_STATE"
     "RAND_PARAM_STRENGTH"
     "RAND_PARAM_MAX_REQUEST"
     "RAND_PARAM_TEST_ENTROPY"
     "RAND_PARAM_TEST_NONCE"
     "RAND_PARAM_GENERATE"
+    "RAND_PARAM_FIPS_APPROVED_INDICATOR"
     "DRBG_PARAM_RESEED_REQUESTS"
     "DRBG_PARAM_RESEED_TIME_INTERVAL"
     "DRBG_PARAM_MIN_ENTROPYLEN"
@@ -166,6 +208,8 @@ set(PARAM_NAMES
     "DRBG_PARAM_CIPHER"
     "DRBG_PARAM_MAC"
     "DRBG_PARAM_USE_DF"
+    "DRBG_PARAM_FIPS_DIGEST_CHECK"
+    "DRBG_PARAM_FIPS_APPROVED_INDICATOR"
     "DRBG_PARAM_ENTROPY_REQUIRED"
     "DRBG_PARAM_PREDICTION_RESISTANCE"
     "DRBG_PARAM_MIN_LENGTH"
@@ -192,6 +236,10 @@ set(PARAM_NAMES
     "PKEY_PARAM_PUB_KEY"
     "PKEY_PARAM_PRIV_KEY"
     "PKEY_PARAM_IMPLICIT_REJECTION"
+    "PKEY_PARAM_FIPS_DIGEST_CHECK"
+    "PKEY_PARAM_FIPS_KEY_CHECK"
+    "PKEY_PARAM_ALGORITHM_ID"
+    "PKEY_PARAM_ALGORITHM_ID_PARAMS"
     "PKEY_PARAM_FFC_P"
     "PKEY_PARAM_FFC_G"
     "PKEY_PARAM_FFC_Q"
@@ -277,6 +325,8 @@ set(PARAM_NAMES
     "PKEY_PARAM_EC_POINT_CONVERSION_FORMAT"
     "PKEY_PARAM_EC_GROUP_CHECK_TYPE"
     "PKEY_PARAM_EC_INCLUDE_PUBLIC"
+    "PKEY_PARAM_FIPS_SIGN_CHECK"
+    "PKEY_PARAM_FIPS_APPROVED_INDICATOR"
     "EXCHANGE_PARAM_PAD"
     "EXCHANGE_PARAM_EC_ECDH_COFACTOR_MODE"
     "EXCHANGE_PARAM_KDF_TYPE"
@@ -284,7 +334,12 @@ set(PARAM_NAMES
     "EXCHANGE_PARAM_KDF_DIGEST_PROPS"
     "EXCHANGE_PARAM_KDF_OUTLEN"
     "EXCHANGE_PARAM_KDF_UKM"
+    "EXCHANGE_PARAM_FIPS_DIGEST_CHECK"
+    "EXCHANGE_PARAM_FIPS_KEY_CHECK"
+    "EXCHANGE_PARAM_FIPS_ECDH_COFACTOR_CHECK"
+    "EXCHANGE_PARAM_FIPS_APPROVED_INDICATOR"
     "SIGNATURE_PARAM_ALGORITHM_ID"
+    "SIGNATURE_PARAM_ALGORITHM_ID_PARAMS"
     "SIGNATURE_PARAM_PAD_MODE"
     "SIGNATURE_PARAM_DIGEST"
     "SIGNATURE_PARAM_PROPERTIES"
@@ -295,6 +350,14 @@ set(PARAM_NAMES
     "SIGNATURE_PARAM_NONCE_TYPE"
     "SIGNATURE_PARAM_INSTANCE"
     "SIGNATURE_PARAM_CONTEXT_STRING"
+    "SIGNATURE_PARAM_FIPS_DIGEST_CHECK"
+    "SIGNATURE_PARAM_FIPS_VERIFY_MESSAGE"
+    "SIGNATURE_PARAM_FIPS_KEY_CHECK"
+    "SIGNATURE_PARAM_FIPS_SIGN_CHECK"
+    "SIGNATURE_PARAM_FIPS_RSA_PSS_SALTLEN_CHECK"
+    "SIGNATURE_PARAM_FIPS_SIGN_X931_PAD_CHECK"
+    "SIGNATURE_PARAM_FIPS_APPROVED_INDICATOR"
+    "SIGNATURE_PARAM_SIGNATURE"
     "ASYM_CIPHER_PARAM_DIGEST"
     "ASYM_CIPHER_PARAM_PROPERTIES"
     "ASYM_CIPHER_PARAM_ENGINE"
@@ -307,6 +370,9 @@ set(PARAM_NAMES
     "ASYM_CIPHER_PARAM_TLS_CLIENT_VERSION"
     "ASYM_CIPHER_PARAM_TLS_NEGOTIATED_VERSION"
     "ASYM_CIPHER_PARAM_IMPLICIT_REJECTION"
+    "ASYM_CIPHER_PARAM_FIPS_RSA_PKCS15_PAD_DISABLED"
+    "ASYM_CIPHER_PARAM_FIPS_KEY_CHECK"
+    "ASYM_CIPHER_PARAM_FIPS_APPROVED_INDICATOR"
     "ENCODER_PARAM_CIPHER"
     "ENCODER_PARAM_PROPERTIES"
     "ENCODER_PARAM_ENCRYPT_LEVEL"
@@ -328,6 +394,8 @@ set(PARAM_NAMES
     "SIGNATURE_PARAM_KAT"
     "KEM_PARAM_OPERATION"
     "KEM_PARAM_IKME"
+    "KEM_PARAM_FIPS_KEY_CHECK"
+    "KEM_PARAM_FIPS_APPROVED_INDICATOR"
     "CAPABILITY_TLS_GROUP_NAME"
     "CAPABILITY_TLS_GROUP_NAME_INTERNAL"
     "CAPABILITY_TLS_GROUP_ID"
@@ -370,165 +438,167 @@ set(PARAM_NAMES
     "LIBSSL_RECORD_LAYER_PARAM_MAX_FRAG_LEN"
     "LIBSSL_RECORD_LAYER_PARAM_MAX_EARLY_DATA"
     "LIBSSL_RECORD_LAYER_PARAM_BLOCK_PADDING"
+    "LIBSSL_RECORD_LAYER_PARAM_HS_PADDING"
 )
 
-# Well known parameter names that core passes to providers
-set("PROV_PARAM_CORE_VERSION" "openssl-version")# utf8_ptr
-set("PROV_PARAM_CORE_PROV_NAME" "provider-name")  # utf8_ptr
-set("PROV_PARAM_CORE_MODULE_FILENAME" "module-filename")# utf8_ptr
-
-# Well known parameter names that Providers can define
-set("PROV_PARAM_NAME" "name")               # utf8_ptr
-set("PROV_PARAM_VERSION" "version")            # utf8_ptr
-set("PROV_PARAM_BUILDINFO" "buildinfo")          # utf8_ptr
-set("PROV_PARAM_STATUS" "status")             # uint
-set("PROV_PARAM_SECURITY_CHECKS" "security-checks")    # uint
-set("PROV_PARAM_TLS1_PRF_EMS_CHECK" "tls1-prf-ems-check") # uint
-set("PROV_PARAM_DRBG_TRUNC_DIGEST" "drbg-no-trunc-md")   # uint
-
-# Self test callback parameters
-set("PROV_PARAM_SELF_TEST_PHASE" "st-phase")# utf8_string
-set("PROV_PARAM_SELF_TEST_TYPE" "st-type") # utf8_string
-set("PROV_PARAM_SELF_TEST_DESC" "st-desc") # utf8_string
-
-# Provider-native object abstractions
-#
-# These are used when a provider wants to pass object data or an object
-# reference back to libcrypto.  This is only useful for provider functions
-# that take a callback to which an PARAM array with these parameters
-# can be passed.
-#
-# This set of parameter names is explained in detail in provider-object(7)
-# (doc/man7/provider-object.pod)
-
-set("OBJECT_PARAM_TYPE" "type")     # INTEGER
-set("OBJECT_PARAM_DATA_TYPE" "data-type")# UTF8_STRING
-set("OBJECT_PARAM_DATA_STRUCTURE" "data-structure")# UTF8_STRING
-set("OBJECT_PARAM_REFERENCE" "reference")# OCTET_STRING
-set("OBJECT_PARAM_DATA" "data")# OCTET_STRING or UTF8_STRING
-set("OBJECT_PARAM_DESC" "desc")     # UTF8_STRING
-
-# Algorithm parameters
-# If "engine",or "properties",are specified, they should always be paired
-# with the algorithm type.
-# Note these are common names that are shared by many types (such as kdf, mac,
-# and pkey) e.g: see MAC_PARAM_DIGEST below.
-
-set("ALG_PARAM_DIGEST" "digest")       # utf8_string
-set("ALG_PARAM_CIPHER" "cipher")       # utf8_string
-set("ALG_PARAM_ENGINE" "engine")       # utf8_string
-set("ALG_PARAM_MAC" "mac")          # utf8_string
-set("ALG_PARAM_PROPERTIES" "properties")   # utf8_string
-
-# cipher parameters
-set("CIPHER_PARAM_PADDING" "padding")     # uint
-set("CIPHER_PARAM_USE_BITS" "use-bits")    # uint
-set("CIPHER_PARAM_TLS_VERSION" "tls-version") # uint
-set("CIPHER_PARAM_TLS_MAC" "tls-mac")     # octet_ptr
-set("CIPHER_PARAM_TLS_MAC_SIZE" "tls-mac-size")# size_t
-set("CIPHER_PARAM_MODE" "mode")        # uint
-set("CIPHER_PARAM_BLOCK_SIZE" "blocksize")   # size_t
-set("CIPHER_PARAM_AEAD" "aead")        # int, 0 or 1
-set("CIPHER_PARAM_CUSTOM_IV" "custom-iv")   # int, 0 or 1
-set("CIPHER_PARAM_CTS" "cts")         # int, 0 or 1
-set("CIPHER_PARAM_TLS1_MULTIBLOCK" "tls-multi")   # int, 0 or 1
-set("CIPHER_PARAM_HAS_RAND_KEY" "has-randkey") # int, 0 or 1
-set("CIPHER_PARAM_KEYLEN" "keylen")      # size_t
-set("CIPHER_PARAM_IVLEN" "ivlen")       # size_t
-set("CIPHER_PARAM_IV" "iv")          # octet_string OR octet_ptr
-set("CIPHER_PARAM_UPDATED_IV" "updated-iv")  # octet_string OR octet_ptr
-set("CIPHER_PARAM_NUM" "num")         # uint
-set("CIPHER_PARAM_ROUNDS" "rounds")      # uint
-set("CIPHER_PARAM_AEAD_TAG" "tag")         # octet_string
-set("CIPHER_PARAM_AEAD_TLS1_AAD" "tlsaad")      # octet_string
-set("CIPHER_PARAM_AEAD_TLS1_AAD_PAD" "tlsaadpad")   # size_t
-set("CIPHER_PARAM_AEAD_TLS1_IV_FIXED" "tlsivfixed")  # octet_string
-set("CIPHER_PARAM_AEAD_TLS1_GET_IV_GEN" "tlsivgen")    # octet_string
-set("CIPHER_PARAM_AEAD_TLS1_SET_IV_INV" "tlsivinv")    # octet_string
+set("PROV_PARAM_CORE_VERSION" "openssl-version")
+set("PROV_PARAM_CORE_PROV_NAME" "provider-name")
+set("PROV_PARAM_CORE_MODULE_FILENAME" "module-filename")
+set("PROV_PARAM_NAME" "name")
+set("PROV_PARAM_VERSION" "version")
+set("PROV_PARAM_BUILDINFO" "buildinfo")
+set("PROV_PARAM_STATUS" "status")
+set("PROV_PARAM_SECURITY_CHECKS" "security-checks")
+set("PROV_PARAM_HMAC_KEY_CHECK" "hmac-key-check")
+set("PROV_PARAM_KMAC_KEY_CHECK" "kmac-key-check")
+set("PROV_PARAM_TLS1_PRF_EMS_CHECK" "tls1-prf-ems-check")
+set("PROV_PARAM_NO_SHORT_MAC" "no-short-mac")
+set("PROV_PARAM_DRBG_TRUNC_DIGEST" "drbg-no-trunc-md")
+set("PROV_PARAM_HKDF_DIGEST_CHECK" "hkdf-digest-check")
+set("PROV_PARAM_TLS13_KDF_DIGEST_CHECK" "tls13-kdf-digest-check")
+set("PROV_PARAM_TLS1_PRF_DIGEST_CHECK" "tls1-prf-digest-check")
+set("PROV_PARAM_SSHKDF_DIGEST_CHECK" "sshkdf-digest-check")
+set("PROV_PARAM_SSKDF_DIGEST_CHECK" "sskdf-digest-check")
+set("PROV_PARAM_X963KDF_DIGEST_CHECK" "x963kdf-digest-check")
+set("PROV_PARAM_DSA_SIGN_DISABLED" "dsa-sign-disabled")
+set("PROV_PARAM_TDES_ENCRYPT_DISABLED" "tdes-encrypt-disabled")
+set("PROV_PARAM_RSA_PSS_SALTLEN_CHECK" "rsa-pss-saltlen-check")
+set("PROV_PARAM_RSA_SIGN_X931_PAD_DISABLED" "rsa-sign-x931-pad-disabled")
+set("PROV_PARAM_RSA_PKCS15_PAD_DISABLED" "rsa-pkcs15-pad-disabled")
+set("PROV_PARAM_HKDF_KEY_CHECK" "hkdf-key-check")
+set("PROV_PARAM_KBKDF_KEY_CHECK" "kbkdf-key-check")
+set("PROV_PARAM_TLS13_KDF_KEY_CHECK" "tls13-kdf-key-check")
+set("PROV_PARAM_TLS1_PRF_KEY_CHECK" "tls1-prf-key-check")
+set("PROV_PARAM_SSHKDF_KEY_CHECK" "sshkdf-key-check")
+set("PROV_PARAM_SSKDF_KEY_CHECK" "sskdf-key-check")
+set("PROV_PARAM_X963KDF_KEY_CHECK" "x963kdf-key-check")
+set("PROV_PARAM_X942KDF_KEY_CHECK" "x942kdf-key-check")
+set("PROV_PARAM_PBKDF2_LOWER_BOUND_CHECK" "pbkdf2-lower-bound-check")
+set("PROV_PARAM_ECDH_COFACTOR_CHECK" "ecdh-cofactor-check")
+set("PROV_PARAM_SIGNATURE_DIGEST_CHECK" "signature-digest-check")
+set("PROV_PARAM_SELF_TEST_PHASE" "st-phase")
+set("PROV_PARAM_SELF_TEST_TYPE" "st-type")
+set("PROV_PARAM_SELF_TEST_DESC" "st-desc")
+set("OBJECT_PARAM_TYPE" "type")
+set("OBJECT_PARAM_DATA_TYPE" "data-type")
+set("OBJECT_PARAM_DATA_STRUCTURE" "data-structure")
+set("OBJECT_PARAM_REFERENCE" "reference")
+set("OBJECT_PARAM_DATA" "data")
+set("OBJECT_PARAM_DESC" "desc")
+set("ALG_PARAM_DIGEST" "digest")
+set("ALG_PARAM_CIPHER" "cipher")
+set("ALG_PARAM_ENGINE" "engine")
+set("ALG_PARAM_MAC" "mac")
+set("ALG_PARAM_PROPERTIES" "properties")
+set("ALG_PARAM_FIPS_APPROVED_INDICATOR" "fips-indicator")
+set("ALG_PARAM_ALGORITHM_ID" "algorithm-id")
+set("ALG_PARAM_ALGORITHM_ID_PARAMS" "algorithm-id-params")
+set("CIPHER_PARAM_PADDING" "padding")
+set("CIPHER_PARAM_USE_BITS" "use-bits")
+set("CIPHER_PARAM_TLS_VERSION" "tls-version")
+set("CIPHER_PARAM_TLS_MAC" "tls-mac")
+set("CIPHER_PARAM_TLS_MAC_SIZE" "tls-mac-size")
+set("CIPHER_PARAM_MODE" "mode")
+set("CIPHER_PARAM_BLOCK_SIZE" "blocksize")
+set("CIPHER_PARAM_AEAD" "aead")
+set("CIPHER_PARAM_CUSTOM_IV" "custom-iv")
+set("CIPHER_PARAM_CTS" "cts")
+set("CIPHER_PARAM_TLS1_MULTIBLOCK" "tls-multi")
+set("CIPHER_PARAM_HAS_RAND_KEY" "has-randkey")
+set("CIPHER_PARAM_KEYLEN" "keylen")
+set("CIPHER_PARAM_IVLEN" "ivlen")
+set("CIPHER_PARAM_IV" "iv")
+set("CIPHER_PARAM_UPDATED_IV" "updated-iv")
+set("CIPHER_PARAM_NUM" "num")
+set("CIPHER_PARAM_ROUNDS" "rounds")
+set("CIPHER_PARAM_AEAD_TAG" "tag")
+set("CIPHER_PARAM_AEAD_TLS1_AAD" "tlsaad")
+set("CIPHER_PARAM_AEAD_TLS1_AAD_PAD" "tlsaadpad")
+set("CIPHER_PARAM_AEAD_TLS1_IV_FIXED" "tlsivfixed")
+set("CIPHER_PARAM_AEAD_TLS1_GET_IV_GEN" "tlsivgen")
+set("CIPHER_PARAM_AEAD_TLS1_SET_IV_INV" "tlsivinv")
 set("CIPHER_PARAM_AEAD_IVLEN" "*CIPHER_PARAM_IVLEN")
-set("CIPHER_PARAM_AEAD_TAGLEN" "taglen")      # size_t
-set("CIPHER_PARAM_AEAD_MAC_KEY" "mackey")      # octet_string
-set("CIPHER_PARAM_RANDOM_KEY" "randkey")     # octet_string
-set("CIPHER_PARAM_RC2_KEYBITS" "keybits")     # size_t
-set("CIPHER_PARAM_SPEED" "speed")       # uint
-set("CIPHER_PARAM_CTS_MODE" "cts_mode")    # utf8_string
-# For passing the AlgorithmIdentifier parameter in DER form
-set("CIPHER_PARAM_ALGORITHM_ID_PARAMS" "alg_id_param")# octet_string
-set("CIPHER_PARAM_XTS_STANDARD" "xts_standard")# utf8_string
-
-set("CIPHER_PARAM_TLS1_MULTIBLOCK_MAX_SEND_FRAGMENT" "tls1multi_maxsndfrag")# uint
-set("CIPHER_PARAM_TLS1_MULTIBLOCK_MAX_BUFSIZE" "tls1multi_maxbufsz")  # size_t
-set("CIPHER_PARAM_TLS1_MULTIBLOCK_INTERLEAVE" "tls1multi_interleave")# uint
-set("CIPHER_PARAM_TLS1_MULTIBLOCK_AAD" "tls1multi_aad")       # octet_string
-set("CIPHER_PARAM_TLS1_MULTIBLOCK_AAD_PACKLEN" "tls1multi_aadpacklen")# uint
-set("CIPHER_PARAM_TLS1_MULTIBLOCK_ENC" "tls1multi_enc")       # octet_string
-set("CIPHER_PARAM_TLS1_MULTIBLOCK_ENC_IN" "tls1multi_encin")     # octet_string
-set("CIPHER_PARAM_TLS1_MULTIBLOCK_ENC_LEN" "tls1multi_enclen")    # size_t
-
-# digest parameters
-set("DIGEST_PARAM_XOFLEN" "xoflen")       # size_t
-set("DIGEST_PARAM_SSL3_MS" "ssl3-ms")      # octet string
-set("DIGEST_PARAM_PAD_TYPE" "pad-type")     # uint
-set("DIGEST_PARAM_MICALG" "micalg")       # utf8 string
-set("DIGEST_PARAM_BLOCK_SIZE" "blocksize")    # size_t
-set("DIGEST_PARAM_SIZE" "size")         # size_t
-set("DIGEST_PARAM_XOF" "xof")          # int, 0 or 1
-set("DIGEST_PARAM_ALGID_ABSENT" "algid-absent") # int, 0 or 1
-
-# MAC parameters
-set("MAC_PARAM_KEY" "key")           # octet string
-set("MAC_PARAM_IV" "iv")            # octet string
-set("MAC_PARAM_CUSTOM" "custom")        # utf8 string
-set("MAC_PARAM_SALT" "salt")          # octet string
-set("MAC_PARAM_XOF" "xof")           # int, 0 or 1
-set("MAC_PARAM_DIGEST_NOINIT" "digest-noinit") # int, 0 or 1
-set("MAC_PARAM_DIGEST_ONESHOT" "digest-oneshot")# int, 0 or 1
-set("MAC_PARAM_C_ROUNDS" "c-rounds")      # unsigned int
-set("MAC_PARAM_D_ROUNDS" "d-rounds")      # unsigned int
-
-# If "engine",or "properties",are specified, they should always be paired
-# with "cipher",or "digest".
-
-set("MAC_PARAM_CIPHER" "*ALG_PARAM_CIPHER")        # utf8 string
-set("MAC_PARAM_DIGEST" "*ALG_PARAM_DIGEST")        # utf8 string
-set("MAC_PARAM_PROPERTIES" "*ALG_PARAM_PROPERTIES")    # utf8 string
-set("MAC_PARAM_SIZE" "size")                     # size_t
-set("MAC_PARAM_BLOCK_SIZE" "block-size")               # size_t
-set("MAC_PARAM_TLS_DATA_SIZE" "tls-data-size")            # size_t
-
-# KDF / PRF parameters
-set("KDF_PARAM_SECRET" "secret")                   # octet string
-set("KDF_PARAM_KEY" "key")                      # octet string
-set("KDF_PARAM_SALT" "salt")                     # octet string
-set("KDF_PARAM_PASSWORD" "pass")                     # octet string
-set("KDF_PARAM_PREFIX" "prefix")                   # octet string
-set("KDF_PARAM_LABEL" "label")                    # octet string
-set("KDF_PARAM_DATA" "data")                     # octet string
-set("KDF_PARAM_DIGEST" "*ALG_PARAM_DIGEST")        # utf8 string
-set("KDF_PARAM_CIPHER" "*ALG_PARAM_CIPHER")        # utf8 string
-set("KDF_PARAM_MAC" "*ALG_PARAM_MAC")           # utf8 string
-set("KDF_PARAM_MAC_SIZE" "maclen")                   # size_t
-set("KDF_PARAM_PROPERTIES" "*ALG_PARAM_PROPERTIES")    # utf8 string
-set("KDF_PARAM_ITER" "iter")                     # unsigned int
-set("KDF_PARAM_MODE" "mode")                     # utf8 string or int
-set("KDF_PARAM_PKCS5" "pkcs5")                    # int
-set("KDF_PARAM_UKM" "ukm")                      # octet string
-set("KDF_PARAM_CEK_ALG" "cekalg")                   # utf8 string
-set("KDF_PARAM_SCRYPT_N" "n")                        # uint64_t
-set("KDF_PARAM_SCRYPT_R" "r")                        # uint32_t
-set("KDF_PARAM_SCRYPT_P" "p")                        # uint32_t
-set("KDF_PARAM_SCRYPT_MAXMEM" "maxmem_bytes")            # uint64_t
-set("KDF_PARAM_INFO" "info")                     # octet string
-set("KDF_PARAM_SEED" "seed")                     # octet string
-set("KDF_PARAM_SSHKDF_XCGHASH" "xcghash")                # octet string
-set("KDF_PARAM_SSHKDF_SESSION_ID" "session_id")          # octet string
-set("KDF_PARAM_SSHKDF_TYPE" "type")                     # int
-set("KDF_PARAM_SIZE" "size")                     # size_t
-set("KDF_PARAM_CONSTANT" "constant")                 # octet string
-set("KDF_PARAM_PKCS12_ID" "id")                       # int
-set("KDF_PARAM_KBKDF_USE_L" "use-l")            # int
-set("KDF_PARAM_KBKDF_USE_SEPARATOR" "use-separator")    # int
-set("KDF_PARAM_KBKDF_R" "r")                        # int
+set("CIPHER_PARAM_AEAD_IV_GENERATED" "iv-generated")
+set("CIPHER_PARAM_AEAD_TAGLEN" "taglen")
+set("CIPHER_PARAM_AEAD_MAC_KEY" "mackey")
+set("CIPHER_PARAM_RANDOM_KEY" "randkey")
+set("CIPHER_PARAM_RC2_KEYBITS" "keybits")
+set("CIPHER_PARAM_SPEED" "speed")
+set("CIPHER_PARAM_CTS_MODE" "cts_mode")
+set("CIPHER_PARAM_DECRYPT_ONLY" "decrypt-only")
+set("CIPHER_PARAM_FIPS_ENCRYPT_CHECK" "encrypt-check")
+set("CIPHER_PARAM_FIPS_APPROVED_INDICATOR" "*ALG_PARAM_FIPS_APPROVED_INDICATOR")
+set("CIPHER_PARAM_ALGORITHM_ID" "*ALG_PARAM_ALGORITHM_ID")
+set("CIPHER_PARAM_ALGORITHM_ID_PARAMS" "*ALG_PARAM_ALGORITHM_ID_PARAMS")
+set("CIPHER_PARAM_ALGORITHM_ID_PARAMS_OLD" "alg_id_param")
+set("CIPHER_PARAM_XTS_STANDARD" "xts_standard")
+set("CIPHER_PARAM_TLS1_MULTIBLOCK_MAX_SEND_FRAGMENT" "tls1multi_maxsndfrag")
+set("CIPHER_PARAM_TLS1_MULTIBLOCK_MAX_BUFSIZE" "tls1multi_maxbufsz")
+set("CIPHER_PARAM_TLS1_MULTIBLOCK_INTERLEAVE" "tls1multi_interleave")
+set("CIPHER_PARAM_TLS1_MULTIBLOCK_AAD" "tls1multi_aad")
+set("CIPHER_PARAM_TLS1_MULTIBLOCK_AAD_PACKLEN" "tls1multi_aadpacklen")
+set("CIPHER_PARAM_TLS1_MULTIBLOCK_ENC" "tls1multi_enc")
+set("CIPHER_PARAM_TLS1_MULTIBLOCK_ENC_IN" "tls1multi_encin")
+set("CIPHER_PARAM_TLS1_MULTIBLOCK_ENC_LEN" "tls1multi_enclen")
+set("DIGEST_PARAM_XOFLEN" "xoflen")
+set("DIGEST_PARAM_SSL3_MS" "ssl3-ms")
+set("DIGEST_PARAM_PAD_TYPE" "pad-type")
+set("DIGEST_PARAM_MICALG" "micalg")
+set("DIGEST_PARAM_BLOCK_SIZE" "blocksize")
+set("DIGEST_PARAM_SIZE" "size")
+set("DIGEST_PARAM_XOF" "xof")
+set("DIGEST_PARAM_ALGID_ABSENT" "algid-absent")
+set("MAC_PARAM_KEY" "key")
+set("MAC_PARAM_IV" "iv")
+set("MAC_PARAM_CUSTOM" "custom")
+set("MAC_PARAM_SALT" "salt")
+set("MAC_PARAM_XOF" "xof")
+set("MAC_PARAM_DIGEST_NOINIT" "digest-noinit")
+set("MAC_PARAM_DIGEST_ONESHOT" "digest-oneshot")
+set("MAC_PARAM_C_ROUNDS" "c-rounds")
+set("MAC_PARAM_D_ROUNDS" "d-rounds")
+set("MAC_PARAM_CIPHER" "*ALG_PARAM_CIPHER")
+set("MAC_PARAM_DIGEST" "*ALG_PARAM_DIGEST")
+set("MAC_PARAM_PROPERTIES" "*ALG_PARAM_PROPERTIES")
+set("MAC_PARAM_SIZE" "size")
+set("MAC_PARAM_BLOCK_SIZE" "block-size")
+set("MAC_PARAM_TLS_DATA_SIZE" "tls-data-size")
+set("MAC_PARAM_FIPS_NO_SHORT_MAC" "*PROV_PARAM_NO_SHORT_MAC")
+set("MAC_PARAM_FIPS_KEY_CHECK" "*PKEY_PARAM_FIPS_KEY_CHECK")
+set("MAC_PARAM_FIPS_APPROVED_INDICATOR" "*ALG_PARAM_FIPS_APPROVED_INDICATOR")
+set("MAC_PARAM_FIPS_NO_SHORT_MAC" "*PROV_PARAM_NO_SHORT_MAC")
+set("KDF_PARAM_SECRET" "secret")
+set("KDF_PARAM_KEY" "key")
+set("KDF_PARAM_SALT" "salt")
+set("KDF_PARAM_PASSWORD" "pass")
+set("KDF_PARAM_PREFIX" "prefix")
+set("KDF_PARAM_LABEL" "label")
+set("KDF_PARAM_DATA" "data")
+set("KDF_PARAM_DIGEST" "*ALG_PARAM_DIGEST")
+set("KDF_PARAM_CIPHER" "*ALG_PARAM_CIPHER")
+set("KDF_PARAM_MAC" "*ALG_PARAM_MAC")
+set("KDF_PARAM_MAC_SIZE" "maclen")
+set("KDF_PARAM_PROPERTIES" "*ALG_PARAM_PROPERTIES")
+set("KDF_PARAM_ITER" "iter")
+set("KDF_PARAM_MODE" "mode")
+set("KDF_PARAM_PKCS5" "pkcs5")
+set("KDF_PARAM_UKM" "ukm")
+set("KDF_PARAM_CEK_ALG" "cekalg")
+set("KDF_PARAM_SCRYPT_N" "n")
+set("KDF_PARAM_SCRYPT_R" "r")
+set("KDF_PARAM_SCRYPT_P" "p")
+set("KDF_PARAM_SCRYPT_MAXMEM" "maxmem_bytes")
+set("KDF_PARAM_INFO" "info")
+set("KDF_PARAM_SEED" "seed")
+set("KDF_PARAM_SSHKDF_XCGHASH" "xcghash")
+set("KDF_PARAM_SSHKDF_SESSION_ID" "session_id")
+set("KDF_PARAM_SSHKDF_TYPE" "type")
+set("KDF_PARAM_SIZE" "size")
+set("KDF_PARAM_CONSTANT" "constant")
+set("KDF_PARAM_PKCS12_ID" "id")
+set("KDF_PARAM_KBKDF_USE_L" "use-l")
+set("KDF_PARAM_KBKDF_USE_SEPARATOR" "use-separator")
+set("KDF_PARAM_KBKDF_R" "r")
 set("KDF_PARAM_X942_ACVPINFO" "acvp-info")
 set("KDF_PARAM_X942_PARTYUINFO" "partyu-info")
 set("KDF_PARAM_X942_PARTYVINFO" "partyv-info")
@@ -537,22 +607,23 @@ set("KDF_PARAM_X942_SUPP_PRIVINFO" "supp-privinfo")
 set("KDF_PARAM_X942_USE_KEYBITS" "use-keybits")
 set("KDF_PARAM_HMACDRBG_ENTROPY" "entropy")
 set("KDF_PARAM_HMACDRBG_NONCE" "nonce")
-set("KDF_PARAM_THREADS" "threads")                # uint32_t
-set("KDF_PARAM_EARLY_CLEAN" "early_clean")            # uint32_t
-set("KDF_PARAM_ARGON2_AD" "ad")                     # octet string
-set("KDF_PARAM_ARGON2_LANES" "lanes")                  # uint32_t
-set("KDF_PARAM_ARGON2_MEMCOST" "memcost")                # uint32_t
-set("KDF_PARAM_ARGON2_VERSION" "version")                # uint32_t
-
-# Known RAND names
+set("KDF_PARAM_THREADS" "threads")
+set("KDF_PARAM_EARLY_CLEAN" "early_clean")
+set("KDF_PARAM_ARGON2_AD" "ad")
+set("KDF_PARAM_ARGON2_LANES" "lanes")
+set("KDF_PARAM_ARGON2_MEMCOST" "memcost")
+set("KDF_PARAM_ARGON2_VERSION" "version")
+set("KDF_PARAM_FIPS_EMS_CHECK" "ems_check")
+set("KDF_PARAM_FIPS_DIGEST_CHECK" "*PKEY_PARAM_FIPS_DIGEST_CHECK")
+set("KDF_PARAM_FIPS_KEY_CHECK" "*PKEY_PARAM_FIPS_KEY_CHECK")
+set("KDF_PARAM_FIPS_APPROVED_INDICATOR" "*ALG_PARAM_FIPS_APPROVED_INDICATOR")
 set("RAND_PARAM_STATE" "state")
 set("RAND_PARAM_STRENGTH" "strength")
 set("RAND_PARAM_MAX_REQUEST" "max_request")
 set("RAND_PARAM_TEST_ENTROPY" "test_entropy")
 set("RAND_PARAM_TEST_NONCE" "test_nonce")
 set("RAND_PARAM_GENERATE" "generate")
-
-# RAND/DRBG names
+set("RAND_PARAM_FIPS_APPROVED_INDICATOR" "*ALG_PARAM_FIPS_APPROVED_INDICATOR")
 set("DRBG_PARAM_RESEED_REQUESTS" "reseed_requests")
 set("DRBG_PARAM_RESEED_TIME_INTERVAL" "reseed_time_interval")
 set("DRBG_PARAM_MIN_ENTROPYLEN" "min_entropylen")
@@ -568,26 +639,23 @@ set("DRBG_PARAM_DIGEST" "*ALG_PARAM_DIGEST")
 set("DRBG_PARAM_CIPHER" "*ALG_PARAM_CIPHER")
 set("DRBG_PARAM_MAC" "*ALG_PARAM_MAC")
 set("DRBG_PARAM_USE_DF" "use_derivation_function")
-
-# DRBG call back parameters
+set("DRBG_PARAM_FIPS_DIGEST_CHECK" "*PKEY_PARAM_FIPS_DIGEST_CHECK")
+set("DRBG_PARAM_FIPS_APPROVED_INDICATOR" "*ALG_PARAM_FIPS_APPROVED_INDICATOR")
 set("DRBG_PARAM_ENTROPY_REQUIRED" "entropy_required")
 set("DRBG_PARAM_PREDICTION_RESISTANCE" "prediction_resistance")
 set("DRBG_PARAM_MIN_LENGTH" "minium_length")
 set("DRBG_PARAM_MAX_LENGTH" "maxium_length")
 set("DRBG_PARAM_RANDOM_DATA" "random_data")
 set("DRBG_PARAM_SIZE" "size")
-
-# PKEY parameters
-# Common PKEY parameters
-set("PKEY_PARAM_BITS" "bits")# integer
-set("PKEY_PARAM_MAX_SIZE" "max-size")# integer
-set("PKEY_PARAM_SECURITY_BITS" "security-bits")# integer
+set("PKEY_PARAM_BITS" "bits")
+set("PKEY_PARAM_MAX_SIZE" "max-size")
+set("PKEY_PARAM_SECURITY_BITS" "security-bits")
 set("PKEY_PARAM_DIGEST" "*ALG_PARAM_DIGEST")
-set("PKEY_PARAM_CIPHER" "*ALG_PARAM_CIPHER") # utf8 string
-set("PKEY_PARAM_ENGINE" "*ALG_PARAM_ENGINE") # utf8 string
+set("PKEY_PARAM_CIPHER" "*ALG_PARAM_CIPHER")
+set("PKEY_PARAM_ENGINE" "*ALG_PARAM_ENGINE")
 set("PKEY_PARAM_PROPERTIES" "*ALG_PARAM_PROPERTIES")
-set("PKEY_PARAM_DEFAULT_DIGEST" "default-digest")# utf8 string
-set("PKEY_PARAM_MANDATORY_DIGEST" "mandatory-digest")# utf8 string
+set("PKEY_PARAM_DEFAULT_DIGEST" "default-digest")
+set("PKEY_PARAM_MANDATORY_DIGEST" "mandatory-digest")
 set("PKEY_PARAM_PAD_MODE" "pad-mode")
 set("PKEY_PARAM_DIGEST_SIZE" "digest-size")
 set("PKEY_PARAM_MASKGENFUNC" "mgf")
@@ -599,8 +667,10 @@ set("PKEY_PARAM_DIST_ID" "distid")
 set("PKEY_PARAM_PUB_KEY" "pub")
 set("PKEY_PARAM_PRIV_KEY" "priv")
 set("PKEY_PARAM_IMPLICIT_REJECTION" "implicit-rejection")
-
-# Diffie-Hellman/DSA Parameters
+set("PKEY_PARAM_FIPS_DIGEST_CHECK" "digest-check")
+set("PKEY_PARAM_FIPS_KEY_CHECK" "key-check")
+set("PKEY_PARAM_ALGORITHM_ID" "*ALG_PARAM_ALGORITHM_ID")
+set("PKEY_PARAM_ALGORITHM_ID_PARAMS" "*ALG_PARAM_ALGORITHM_ID_PARAMS")
 set("PKEY_PARAM_FFC_P" "p")
 set("PKEY_PARAM_FFC_G" "g")
 set("PKEY_PARAM_FFC_Q" "q")
@@ -612,16 +682,10 @@ set("PKEY_PARAM_FFC_H" "hindex")
 set("PKEY_PARAM_FFC_VALIDATE_PQ" "validate-pq")
 set("PKEY_PARAM_FFC_VALIDATE_G" "validate-g")
 set("PKEY_PARAM_FFC_VALIDATE_LEGACY" "validate-legacy")
-
-# Diffie-Hellman params
 set("PKEY_PARAM_DH_GENERATOR" "safeprime-generator")
 set("PKEY_PARAM_DH_PRIV_LEN" "priv_len")
-
-# Elliptic Curve Domain Parameters
 set("PKEY_PARAM_EC_PUB_X" "qx")
 set("PKEY_PARAM_EC_PUB_Y" "qy")
-
-# Elliptic Curve Explicit Domain Parameters
 set("PKEY_PARAM_EC_FIELD_TYPE" "field-type")
 set("PKEY_PARAM_EC_P" "p")
 set("PKEY_PARAM_EC_A" "a")
@@ -637,25 +701,8 @@ set("PKEY_PARAM_EC_CHAR2_PP_K1" "k1")
 set("PKEY_PARAM_EC_CHAR2_PP_K2" "k2")
 set("PKEY_PARAM_EC_CHAR2_PP_K3" "k3")
 set("PKEY_PARAM_EC_DECODED_FROM_EXPLICIT_PARAMS" "decoded-from-explicit")
-
-# Elliptic Curve Key Parameters
 set("PKEY_PARAM_USE_COFACTOR_FLAG" "use-cofactor-flag")
 set("PKEY_PARAM_USE_COFACTOR_ECDH" "*PKEY_PARAM_USE_COFACTOR_FLAG")
-
-# RSA Keys
-#
-# n, e, d are the usual public and private key components
-#
-# rsa-num is the number of factors, including p and q
-# rsa-factor is used for each factor: p, q, r_i (i = 3, ...)
-# rsa-exponent is used for each exponent: dP, dQ, d_i (i = 3, ...)
-# rsa-coefficient is used for each coefficient: qInv, t_i (i = 3, ...)
-#
-# The number of rsa-factor items must be equal to the number of rsa-exponent
-# items, and the number of rsa-coefficients must be one less.
-# (the base i for the coefficients is 2, not 1, at least as implied by
-# RFC 8017)
-
 set("PKEY_PARAM_RSA_N" "n")
 set("PKEY_PARAM_RSA_E" "e")
 set("PKEY_PARAM_RSA_D" "d")
@@ -691,8 +738,6 @@ set("PKEY_PARAM_RSA_COEFFICIENT6" "rsa-coefficient6")
 set("PKEY_PARAM_RSA_COEFFICIENT7" "rsa-coefficient7")
 set("PKEY_PARAM_RSA_COEFFICIENT8" "rsa-coefficient8")
 set("PKEY_PARAM_RSA_COEFFICIENT9" "rsa-coefficient9")
-
-# Key generation parameters
 set("PKEY_PARAM_RSA_BITS" "*PKEY_PARAM_BITS")
 set("PKEY_PARAM_RSA_PRIMES" "primes")
 set("PKEY_PARAM_RSA_DIGEST" "*PKEY_PARAM_DIGEST")
@@ -701,34 +746,31 @@ set("PKEY_PARAM_RSA_MASKGENFUNC" "*PKEY_PARAM_MASKGENFUNC")
 set("PKEY_PARAM_RSA_MGF1_DIGEST" "*PKEY_PARAM_MGF1_DIGEST")
 set("PKEY_PARAM_RSA_PSS_SALTLEN" "saltlen")
 set("PKEY_PARAM_RSA_DERIVE_FROM_PQ" "rsa-derive-from-pq")
-
-# EC, X25519 and X448 Key generation parameters
 set("PKEY_PARAM_DHKEM_IKM" "dhkem-ikm")
-
-# Key generation parameters
 set("PKEY_PARAM_FFC_TYPE" "type")
 set("PKEY_PARAM_FFC_PBITS" "pbits")
 set("PKEY_PARAM_FFC_QBITS" "qbits")
 set("PKEY_PARAM_FFC_DIGEST" "*PKEY_PARAM_DIGEST")
 set("PKEY_PARAM_FFC_DIGEST_PROPS" "*PKEY_PARAM_PROPERTIES")
-
-set("PKEY_PARAM_EC_ENCODING" "encoding")# utf8_string
+set("PKEY_PARAM_EC_ENCODING" "encoding")
 set("PKEY_PARAM_EC_POINT_CONVERSION_FORMAT" "point-format")
 set("PKEY_PARAM_EC_GROUP_CHECK_TYPE" "group-check")
 set("PKEY_PARAM_EC_INCLUDE_PUBLIC" "include-public")
-
-# Key Exchange parameters
-set("EXCHANGE_PARAM_PAD" "pad")# uint
-set("EXCHANGE_PARAM_EC_ECDH_COFACTOR_MODE" "ecdh-cofactor-mode")# int
-set("EXCHANGE_PARAM_KDF_TYPE" "kdf-type")# utf8_string
-set("EXCHANGE_PARAM_KDF_DIGEST" "kdf-digest")# utf8_string
-set("EXCHANGE_PARAM_KDF_DIGEST_PROPS" "kdf-digest-props")# utf8_string
-set("EXCHANGE_PARAM_KDF_OUTLEN" "kdf-outlen")# size_t
-# The following parameter is an octet_string on set and an octet_ptr on get
+set("PKEY_PARAM_FIPS_SIGN_CHECK" "sign-check")
+set("PKEY_PARAM_FIPS_APPROVED_INDICATOR" "*ALG_PARAM_FIPS_APPROVED_INDICATOR")
+set("EXCHANGE_PARAM_PAD" "pad")
+set("EXCHANGE_PARAM_EC_ECDH_COFACTOR_MODE" "ecdh-cofactor-mode")
+set("EXCHANGE_PARAM_KDF_TYPE" "kdf-type")
+set("EXCHANGE_PARAM_KDF_DIGEST" "kdf-digest")
+set("EXCHANGE_PARAM_KDF_DIGEST_PROPS" "kdf-digest-props")
+set("EXCHANGE_PARAM_KDF_OUTLEN" "kdf-outlen")
 set("EXCHANGE_PARAM_KDF_UKM" "kdf-ukm")
-
-# Signature parameters
-set("SIGNATURE_PARAM_ALGORITHM_ID" "algorithm-id")
+set("EXCHANGE_PARAM_FIPS_DIGEST_CHECK" "*PKEY_PARAM_FIPS_DIGEST_CHECK")
+set("EXCHANGE_PARAM_FIPS_KEY_CHECK" "*PKEY_PARAM_FIPS_KEY_CHECK")
+set("EXCHANGE_PARAM_FIPS_ECDH_COFACTOR_CHECK" "*PROV_PARAM_ECDH_COFACTOR_CHECK")
+set("EXCHANGE_PARAM_FIPS_APPROVED_INDICATOR" "*ALG_PARAM_FIPS_APPROVED_INDICATOR")
+set("SIGNATURE_PARAM_ALGORITHM_ID" "*PKEY_PARAM_ALGORITHM_ID")
+set("SIGNATURE_PARAM_ALGORITHM_ID_PARAMS" "*PKEY_PARAM_ALGORITHM_ID_PARAMS")
 set("SIGNATURE_PARAM_PAD_MODE" "*PKEY_PARAM_PAD_MODE")
 set("SIGNATURE_PARAM_DIGEST" "*PKEY_PARAM_DIGEST")
 set("SIGNATURE_PARAM_PROPERTIES" "*PKEY_PARAM_PROPERTIES")
@@ -739,8 +781,14 @@ set("SIGNATURE_PARAM_DIGEST_SIZE" "*PKEY_PARAM_DIGEST_SIZE")
 set("SIGNATURE_PARAM_NONCE_TYPE" "nonce-type")
 set("SIGNATURE_PARAM_INSTANCE" "instance")
 set("SIGNATURE_PARAM_CONTEXT_STRING" "context-string")
-
-# Asym cipher parameters
+set("SIGNATURE_PARAM_FIPS_DIGEST_CHECK" "*PKEY_PARAM_FIPS_DIGEST_CHECK")
+set("SIGNATURE_PARAM_FIPS_VERIFY_MESSAGE" "verify-message")
+set("SIGNATURE_PARAM_FIPS_KEY_CHECK" "*PKEY_PARAM_FIPS_KEY_CHECK")
+set("SIGNATURE_PARAM_FIPS_SIGN_CHECK" "*PKEY_PARAM_FIPS_SIGN_CHECK")
+set("SIGNATURE_PARAM_FIPS_RSA_PSS_SALTLEN_CHECK" "rsa-pss-saltlen-check")
+set("SIGNATURE_PARAM_FIPS_SIGN_X931_PAD_CHECK" "sign-x931-pad-check")
+set("SIGNATURE_PARAM_FIPS_APPROVED_INDICATOR" "*ALG_PARAM_FIPS_APPROVED_INDICATOR")
+set("SIGNATURE_PARAM_SIGNATURE" "signature")
 set("ASYM_CIPHER_PARAM_DIGEST" "*PKEY_PARAM_DIGEST")
 set("ASYM_CIPHER_PARAM_PROPERTIES" "*PKEY_PARAM_PROPERTIES")
 set("ASYM_CIPHER_PARAM_ENGINE" "*PKEY_PARAM_ENGINE")
@@ -749,30 +797,21 @@ set("ASYM_CIPHER_PARAM_MGF1_DIGEST" "*PKEY_PARAM_MGF1_DIGEST")
 set("ASYM_CIPHER_PARAM_MGF1_DIGEST_PROPS" "*PKEY_PARAM_MGF1_PROPERTIES")
 set("ASYM_CIPHER_PARAM_OAEP_DIGEST" "*ALG_PARAM_DIGEST")
 set("ASYM_CIPHER_PARAM_OAEP_DIGEST_PROPS" "digest-props")
-# The following parameter is an octet_string on set and an octet_ptr on get
 set("ASYM_CIPHER_PARAM_OAEP_LABEL" "oaep-label")
 set("ASYM_CIPHER_PARAM_TLS_CLIENT_VERSION" "tls-client-version")
 set("ASYM_CIPHER_PARAM_TLS_NEGOTIATED_VERSION" "tls-negotiated-version")
 set("ASYM_CIPHER_PARAM_IMPLICIT_REJECTION" "implicit-rejection")
-
-# Encoder / decoder parameters
-
+set("ASYM_CIPHER_PARAM_FIPS_RSA_PKCS15_PAD_DISABLED" "*PROV_PARAM_RSA_PKCS15_PAD_DISABLED")
+set("ASYM_CIPHER_PARAM_FIPS_KEY_CHECK" "*PKEY_PARAM_FIPS_KEY_CHECK")
+set("ASYM_CIPHER_PARAM_FIPS_APPROVED_INDICATOR" "*ALG_PARAM_FIPS_APPROVED_INDICATOR")
 set("ENCODER_PARAM_CIPHER" "*ALG_PARAM_CIPHER")
 set("ENCODER_PARAM_PROPERTIES" "*ALG_PARAM_PROPERTIES")
-# Currently PVK only, but reusable for others as needed
 set("ENCODER_PARAM_ENCRYPT_LEVEL" "encrypt-level")
-set("ENCODER_PARAM_SAVE_PARAMETERS" "save-parameters")# integer
-
+set("ENCODER_PARAM_SAVE_PARAMETERS" "save-parameters")
 set("DECODER_PARAM_PROPERTIES" "*ALG_PARAM_PROPERTIES")
-
-# Passphrase callback parameters
 set("PASSPHRASE_PARAM_INFO" "info")
-
-# Keygen callback parameters, from provider to libcrypto
-set("GEN_PARAM_POTENTIAL" "potential")# integer
-set("GEN_PARAM_ITERATION" "iteration")# integer
-
-# ACVP Test parameters : These should not be used normally
+set("GEN_PARAM_POTENTIAL" "potential")
+set("GEN_PARAM_ITERATION" "iteration")
 set("PKEY_PARAM_RSA_TEST_XP1" "xp1")
 set("PKEY_PARAM_RSA_TEST_XP2" "xp2")
 set("PKEY_PARAM_RSA_TEST_XP" "xp")
@@ -784,14 +823,10 @@ set("PKEY_PARAM_RSA_TEST_P2" "p2")
 set("PKEY_PARAM_RSA_TEST_Q1" "q1")
 set("PKEY_PARAM_RSA_TEST_Q2" "q2")
 set("SIGNATURE_PARAM_KAT" "kat")
-
-# KEM parameters
 set("KEM_PARAM_OPERATION" "operation")
 set("KEM_PARAM_IKME" "ikme")
-
-# Capabilities
-
-# TLS-GROUP Capability
+set("KEM_PARAM_FIPS_KEY_CHECK" "*PKEY_PARAM_FIPS_KEY_CHECK")
+set("KEM_PARAM_FIPS_APPROVED_INDICATOR" "*ALG_PARAM_FIPS_APPROVED_INDICATOR")
 set("CAPABILITY_TLS_GROUP_NAME" "tls-group-name")
 set("CAPABILITY_TLS_GROUP_NAME_INTERNAL" "tls-group-name-internal")
 set("CAPABILITY_TLS_GROUP_ID" "tls-group-id")
@@ -802,8 +837,6 @@ set("CAPABILITY_TLS_GROUP_MIN_TLS" "tls-min-tls")
 set("CAPABILITY_TLS_GROUP_MAX_TLS" "tls-max-tls")
 set("CAPABILITY_TLS_GROUP_MIN_DTLS" "tls-min-dtls")
 set("CAPABILITY_TLS_GROUP_MAX_DTLS" "tls-max-dtls")
-
-# TLS-SIGALG Capability
 set("CAPABILITY_TLS_SIGALG_IANA_NAME" "tls-sigalg-iana-name")
 set("CAPABILITY_TLS_SIGALG_CODE_POINT" "tls-sigalg-code-point")
 set("CAPABILITY_TLS_SIGALG_NAME" "tls-sigalg-name")
@@ -817,37 +850,15 @@ set("CAPABILITY_TLS_SIGALG_KEYTYPE_OID" "tls-sigalg-keytype-oid")
 set("CAPABILITY_TLS_SIGALG_SECURITY_BITS" "tls-sigalg-sec-bits")
 set("CAPABILITY_TLS_SIGALG_MIN_TLS" "tls-min-tls")
 set("CAPABILITY_TLS_SIGALG_MAX_TLS" "tls-max-tls")
-
-# storemgmt parameters
-
-
-# Used by storemgmt_ctx_set_params():
-#
-# - STORE_PARAM_EXPECT is an INTEGER, and the value is any of the
-#   STORE_INFO numbers.  This is used to set the expected type of
-#   object loaded.
-#
-# - STORE_PARAM_SUBJECT, STORE_PARAM_ISSUER,
-#   STORE_PARAM_SERIAL, STORE_PARAM_FINGERPRINT,
-#   STORE_PARAM_DIGEST, STORE_PARAM_ALIAS
-#   are used as search criteria.
-#   (STORE_PARAM_DIGEST is used with STORE_PARAM_FINGERPRINT)
-
-set("STORE_PARAM_EXPECT" "expect")       # INTEGER
-set("STORE_PARAM_SUBJECT" "subject")      # DER blob => OCTET_STRING
-set("STORE_PARAM_ISSUER" "name")         # DER blob => OCTET_STRING
-set("STORE_PARAM_SERIAL" "serial")       # INTEGER
-set("STORE_PARAM_DIGEST" "digest")       # UTF8_STRING
-set("STORE_PARAM_FINGERPRINT" "fingerprint") # OCTET_STRING
-set("STORE_PARAM_ALIAS" "alias")        # UTF8_STRING
-
-# You may want to pass properties for the provider implementation to use
-set("STORE_PARAM_PROPERTIES" "properties")   # utf8_string
-# DECODER input type if a decoder is used by the store
-set("STORE_PARAM_INPUT_TYPE" "input-type")   # UTF8_STRING
-
-
-# Libssl record layer
+set("STORE_PARAM_EXPECT" "expect")
+set("STORE_PARAM_SUBJECT" "subject")
+set("STORE_PARAM_ISSUER" "name")
+set("STORE_PARAM_SERIAL" "serial")
+set("STORE_PARAM_DIGEST" "digest")
+set("STORE_PARAM_FINGERPRINT" "fingerprint")
+set("STORE_PARAM_ALIAS" "alias")
+set("STORE_PARAM_PROPERTIES" "properties")
+set("STORE_PARAM_INPUT_TYPE" "input-type")
 set("LIBSSL_RECORD_LAYER_PARAM_OPTIONS" "options")
 set("LIBSSL_RECORD_LAYER_PARAM_MODE" "mode")
 set("LIBSSL_RECORD_LAYER_PARAM_READ_AHEAD" "read_ahead")
@@ -858,6 +869,8 @@ set("LIBSSL_RECORD_LAYER_PARAM_TLSTREE" "tlstree")
 set("LIBSSL_RECORD_LAYER_PARAM_MAX_FRAG_LEN" "max_frag_len")
 set("LIBSSL_RECORD_LAYER_PARAM_MAX_EARLY_DATA" "max_early_data")
 set("LIBSSL_RECORD_LAYER_PARAM_BLOCK_PADDING" "block_padding")
+set("LIBSSL_RECORD_LAYER_PARAM_HS_PADDING" "hs_padding")
+
 
 function(generate_public_macros)
     set(macros)

@@ -76,7 +76,6 @@ if (OPENSSL_QUIC)
     set(LIBSSL_SOURCES
         ${LIBSSL_SOURCES}
         ${CMAKE_SOURCE_DIR}/openssl/ssl/priority_queue.c
-        ${CMAKE_SOURCE_DIR}/openssl/ssl/event_queue.c
     )
     include(quic.cmake)
 endif()

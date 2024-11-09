@@ -1,10 +1,10 @@
 # openssl-externalCMake
 
-![Build Status](https://github.com/Fsu0413/openssl-externalCMake/actions/workflows/cmake.yml/badge.svg?branch=3.3)
+![Build Status](https://github.com/Fsu0413/openssl-externalCMake/actions/workflows/cmake.yml/badge.svg?branch=3.4)
 
 This is a totally external CMake project for building OpenSSL.
 
-This branch is for OpenSSL 3.2 series.
+This branch is for OpenSSL 3.4 series.
 
 ## Disclaimer
 
@@ -108,6 +108,6 @@ Just typical CMake procedure will work. See [Mapping.md](Mapping.md) for argumen
 
 Sort by priority
 
-### On 3.2 branch:
+### On 3.4 branch:
 
 1. `make check` support

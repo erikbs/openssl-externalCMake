@@ -94,8 +94,8 @@ set(LIBDEFAULT_SOURCES
     ${CMAKE_SOURCE_DIR}/openssl/providers/implementations/rands/drbg_ctr.c
     ${CMAKE_SOURCE_DIR}/openssl/providers/implementations/rands/drbg_hash.c
     ${CMAKE_SOURCE_DIR}/openssl/providers/implementations/rands/drbg_hmac.c
-    ${CMAKE_SOURCE_DIR}/openssl/providers/implementations/rands/crngt.c
     ${CMAKE_SOURCE_DIR}/openssl/providers/implementations/rands/seed_src.c
+    ${CMAKE_SOURCE_DIR}/openssl/providers/implementations/rands/seed_src_jitter.c
     ${CMAKE_SOURCE_DIR}/openssl/providers/implementations/signature/rsa_sig.c
     ${CMAKE_SOURCE_DIR}/openssl/providers/implementations/signature/mac_legacy_sig.c
     ${CMAKE_SOURCE_DIR}/openssl/providers/implementations/storemgmt/file_store.c
@@ -369,6 +369,7 @@ target_include_directories(libdefault
             ${CMAKE_SOURCE_DIR}/openssl/crypto
             ${CMAKE_BINARY_DIR}/providers/common/include
             ${CMAKE_SOURCE_DIR}/openssl/providers/include
+            ${CMAKE_SOURCE_DIR}/openssl/providers/fips/include
 )
 
 target_compile_definitions(libdefault
