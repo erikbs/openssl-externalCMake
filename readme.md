@@ -4,7 +4,7 @@
 
 This is a totally external CMake project for building OpenSSL.
 
-This branch is for OpenSSL 3.2 series.
+This branch is for OpenSSL 3.3 series.
 
 ## Disclaimer
 
@@ -108,6 +108,6 @@ Just typical CMake procedure will work. See [Mapping.md](Mapping.md) for argumen
 
 Sort by priority
 
-### On 3.2 branch:
+### On 3.3 branch:
 
 1. `make check` support
