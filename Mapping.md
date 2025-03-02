@@ -13,6 +13,8 @@
 | (os/platform) | (automatically detected) | See following OS / Platform mapping |
 | `--cross-compile-prefix=` | `-DCMAKE_TOOLCHAIN_FILE=`<br />(A totally different design) | Typical CMake cross build method are used |
 
+Note: On Apple platform, `CMAKE_OSX_ARCHITECTURES` (when number of values is greater than 1) is incompatible with `OPENSSL_ASM=1` due to different build file set and flags.
+
 ## OS / Platform mapping
 
 | Host | Auto-detected platform name (as if passed to `Configure`) | Notes |
